@@ -1,35 +1,30 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
-import Cards from "./components/cards";
+import Header from "./components/header";
+import Footer from "./components/footer";
+import Table from "./components/table";
+import Metrik from "./components/metrik";
+import Divider from "./components/divider";
+import Grafik from "./components/grafik";
 
-// 1 : -0.060783, 109.344055
-// 2 : -0.056249, 109.348753
-
-const position1 = [-0.060783, 109.344055];
-const position2 = [-0.056249, 109.348753];
-const position = [-0.06078, 109.34405];
-const zoom = 16;
-const IndexPage = () => {
+const Home = () => {
   return (
-    <Map center={position} zoom={zoom}>
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position1}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-      <Marker position={position2}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-      <Cards />
-    </Map>
+    <div className="bg-gray-100 font-sans leading-normal tracking-normal">
+      <Header />
+      <div className="container w-full mx-auto pt-20">
+        <div className="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
+          <Metrik />
+          <Divider />
+          <div className="flex flex-row flex-wrap flex-grow mt-2">
+            <Grafik />
+            <Table />
+          </div>
+        </div>
+      </div>
+
+      <Footer />
+    </div>
   );
 };
 
-export default IndexPage;
+export default Home;
